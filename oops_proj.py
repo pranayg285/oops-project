@@ -11,16 +11,18 @@ class chatbook:
                            2. Press 2 to signin
                            3. Press 3 to write a post
                            4. Press 4 to message a friend
-                           5. Press any other key to exit""")
+                           5. Press any other key to exit 
+                           
+                           """)
         
         if user_input == "1":
             self.signup()  #we will call the signup method that we have created.
         elif user_input == "2":
             self.signin()
         elif user_input == "3":
-            pass
+            self.my_post()
         elif user_input == "4":
-            pass
+            self.msg_friend()
         else:
             exit()
         
@@ -47,6 +49,23 @@ class chatbook:
         print("\n")
         self.menu()
             
-            
+    def my_post(self):
+        if self.loggedin == True:   #we will check if the user is logged in or not, if the user is logged in (step2) then the loggedin attribute will be set to True, else False.
+            txt = input("Enter your post here: ")   
+            print(f"Following content has been posted: {txt}")
+        else:
+            print("Please sign in first by pressing 1 in the main menu.")
+        print("\n")
+        self.menu()
     
-obj = chatbook()  #we have created the object for the class, so now as soon as we run the code the constructor would be called immediately. The constructor gets called once we create the object for the class.
+    def msg_friend(self):
+        if self.loggedin == True:
+            friend = input("Whom do you want to send this message to: ")
+            msg = input ("Enter your message over here: ")
+            print(f"Your message has been delivered to {friend}")
+        else:
+            print("You need to sign in first by pressing 1 in the main menu.")    
+        print("\n")
+        self.menu()
+        
+user1 = chatbook()  #we have created the object for the class, so now as soon as we run the code the constructor would be called immediately. The constructor gets called once we create the object for the class.
