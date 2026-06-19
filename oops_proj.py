@@ -14,9 +14,9 @@ class chatbook:
                            5. Press any other key to exit""")
         
         if user_input == "1":
-            pass
+            self.signup()  #we will call the signup method that we have created.
         elif user_input == "2":
-            pass
+            self.signin()
         elif user_input == "3":
             pass
         elif user_input == "4":
@@ -24,5 +24,29 @@ class chatbook:
         else:
             exit()
         
+    def signup(self):
+        email = input("Enter your email over here : ")
+        pwd = input ("Enter your desired password over here: ")
+        self.username = email    #so whatever email the user provides will become the username for them, the username attribute is fetched.
+        self.password = pwd
+        print ("You have signed up successfully!!!")
+        print("\n")
+        self.menu() #we have again called the menu method at the end of this signup method because once this method is done executing, it will return back to the menu method and will run that and show the user all the options again.
         
+    def signin(self): #for the signin of the user we need to first verify wether the user has signed up or not.
+        if self.username == '' and self.password == '':   #if the username and password are empty then we will ask the user to sign up first and then sign in.
+            print("Please Sign up first by pressing 1 in the main menu.")
+        else:
+            uname = input("Please enter your email/username over here: ")
+            pwd = input("Please enter your password over here: ")
+            if self.username == uname and self.password == pwd:
+                print("You have successfully Logged in!!")
+                self.loggedin = True
+            else:
+                print("Please input your correct credentials.")
+        print("\n")
+        self.menu()
+            
+            
+    
 obj = chatbook()  #we have created the object for the class, so now as soon as we run the code the constructor would be called immediately. The constructor gets called once we create the object for the class.
